@@ -26,3 +26,11 @@ extension FunctionalListBool on Iterable<bool> {
     return true;
   }
 }
+
+extension FunctionalListList<T> on Iterable<Iterable<T>> {
+  Iterable<T> flatten() {
+    List<T> _flattedList = [];
+    for (var sublist in this) _flattedList.addAll(sublist);
+    return _flattedList;
+  }
+}
