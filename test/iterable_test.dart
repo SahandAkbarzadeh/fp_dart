@@ -83,6 +83,12 @@ main() {
     expect(flattedList, [1, 2, 3, 4, 5, 6]);
   });
 
+  test('test chain unnest', () {
+    var testChainUnNest =
+        [listWithSubListDepth1, listWithSubListDepth1].unnest().unnest();
+    expect(testChainUnNest, [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]);
+  });
+
   test('test iterable<dynamic>.flatten', () {
     var flattedList1 = listWithSubListDepth1.flatten();
     expect(flattedList1, [1, 2, 3, 4, 5, 6]);
