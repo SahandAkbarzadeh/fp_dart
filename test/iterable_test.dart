@@ -39,9 +39,9 @@ main() {
       expect(someTrue2.allFalse(), false);
     });
   });
-  
-  test('test iterable<Iterable<T>>.flatten', () {
-    final flattedList = listWithSubListDepth1.flatten();
+
+  test('test iterable<Iterable<T>>.unnest', () {
+    final flattedList = listWithSubListDepth1.unnest();
     expect(flattedList, [1, 2, 3, 4, 5, 6]);
   });
 }
