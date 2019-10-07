@@ -34,3 +34,17 @@ extension FunctionalListList<T> on Iterable<Iterable<T>> {
     return _flattedList;
   }
 }
+
+extension FunctionalListDynamic on Iterable<dynamic> {
+  Iterable<dynamic> flatten() {
+    List<dynamic> result = [];
+    for (var item in this) {
+      if (item is Iterable) {
+        result.addAll(item.flatten());
+      } else {
+        result.add(item);
+      }
+    }
+    return result;
+  }
+}

@@ -12,6 +12,28 @@ const listWithSubListDepth1 = [
   [5, 6]
 ];
 
+const dynamicListWithSubListDepth2 = [
+  [1, 2, 3, 4],
+  [5, 6],
+  4,
+  5,
+  [
+    1,
+    [2]
+  ],
+];
+
+const dynamicListWithSubListDepth2WithDifferentTypes = [
+  [1, 2, 3, 4],
+  [5, 6],
+  false,
+  5,
+  [
+    "test",
+    [2]
+  ],
+];
+
 main() {
   group('iterable.all', () {
     test('test iterable<T>.all', () {
@@ -43,5 +65,14 @@ main() {
   test('test iterable<Iterable<T>>.unnest', () {
     final flattedList = listWithSubListDepth1.unnest();
     expect(flattedList, [1, 2, 3, 4, 5, 6]);
+  });
+
+  test('test iterable<dynamic>.flatten', () {
+    var flattedList1 = listWithSubListDepth1.flatten();
+    expect(flattedList1, [1, 2, 3, 4, 5, 6]);
+    var flattedList2 = dynamicListWithSubListDepth2.flatten();
+    expect(flattedList2, [1, 2, 3, 4, 5, 6, 4, 5, 1, 2]);
+    var flattedList3 = dynamicListWithSubListDepth2WithDifferentTypes.flatten();
+    expect(flattedList3, [1, 2, 3, 4, 5, 6, false, 5, "test", 2]);
   });
 }
