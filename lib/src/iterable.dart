@@ -36,13 +36,13 @@ extension FunctionalListList<T> on Iterable<Iterable<T>> {
 }
 
 extension FunctionalListDynamic on Iterable<dynamic> {
-  Iterable<dynamic> flatten() {
-    List<dynamic> result = [];
+  Iterable<R> flatten<R>() {
+    List<R> result = [];
     for (var item in this) {
       if (item is Iterable) {
-        result.addAll(item.flatten());
+        result.addAll(item.flatten().map((x) => x as R));
       } else {
-        result.add(item);
+        result.add(item as R);
       }
     }
     return result;

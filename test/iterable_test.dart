@@ -7,9 +7,25 @@ const someTrue = [true, true, false, true, true];
 const someTrue2 = [false, true, false, true, true];
 const allFalse = [false, false, false];
 
-const listWithSubListDepth1 = [
+const List<List<num>> listWithSubListDepth1 = [
   [1, 2, 3, 4],
   [5, 6]
+];
+
+const List<List<dynamic>> listWithSubListDepth2 = [
+  [1, 2, 3, 4],
+  [
+    5,
+    [3, 4, 5]
+  ]
+];
+
+const List<List<dynamic>> listWithSubListDepth2WithDynamic = [
+  [1, 2, 3, 4],
+  [
+    5,
+    [3, 4, 5, false]
+  ]
 ];
 
 const dynamicListWithSubListDepth2 = [
@@ -74,5 +90,10 @@ main() {
     expect(flattedList2, [1, 2, 3, 4, 5, 6, 4, 5, 1, 2]);
     var flattedList3 = dynamicListWithSubListDepth2WithDifferentTypes.flatten();
     expect(flattedList3, [1, 2, 3, 4, 5, 6, false, 5, "test", 2]);
+  });
+
+  test('test iterable<iterable>.flatten<T>', () {
+    Iterable<num> flattedList1 = listWithSubListDepth2.flatten<num>();
+    expect(flattedList1, [1, 2, 3, 4, 5, 3, 4, 5]);
   });
 }
