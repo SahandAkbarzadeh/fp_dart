@@ -59,9 +59,12 @@ Iterable<Iterable<T>> aperture<T>(Iterable<T> elements, int size) {
   var limit = elements.length - (size - 1);
   (limit >= 0 ? limit : 0).forEach((_) => _result.add([]));
   var _items = elements.toList();
-  while(idx < limit) {
+  while (idx < limit) {
     _result[idx] = _items.getRange(idx, idx + size);
     idx++;
   }
   return _result;
 }
+
+bool any<T>(Iterable<T> elements, ElementTester<T> tester) =>
+    elements.any(tester);

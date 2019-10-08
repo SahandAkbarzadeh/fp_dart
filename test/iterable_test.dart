@@ -144,4 +144,11 @@ main() {
     expect([].aperture(2), []);
   });
 
+  test('test iterable<T>.any', () {
+    expect(f.any([1,2,3], (e) => e >= 1), true);
+    expect(f.any([1,2,3], (e) => e >= 2), true);
+    expect(f.any([1,2,3], (e) => e >= 3), true);
+    expect(f.any([1,2,3], (e) => e >= 4), false);
+  });
+
 }
