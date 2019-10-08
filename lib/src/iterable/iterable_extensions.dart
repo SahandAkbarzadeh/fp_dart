@@ -11,6 +11,12 @@ extension FunctionalList<T> on Iterable<T> {
   Iterable<T> append(T element) => f.append(this, element);
 
   Iterable<Iterable<T>> aperture(int size) => f.aperture(this, size);
+
+}
+
+extension FunctionalListConcat<R, T extends R> on Iterable<T> {
+  Iterable<R> concat<B extends R>(Iterable<B> other) =>
+      f.concat<T, B, R>(this, other);
 }
 
 extension FunctionalListBool on Iterable<bool> {
