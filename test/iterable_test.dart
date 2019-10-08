@@ -192,6 +192,12 @@ main() {
     expect([1, 2, 3].dropLastWhile((x) => false), [1, 2, 3]);
   });
 
+  test('test iterable<T>.dropWhile', () {
+    expect([1, 2, 3, 4, 3, 2, 1].dropWhile((x) => x <= 3), [4,3,2,1]);
+    expect([1, 2, 3, 4, 3, 2, 1].dropWhile((x) => true), []);
+    expect([1, 2, 3].dropWhile((x) => false), [1, 2, 3]);
+  });
+
   test('test iterable<T>.dropRepeats', () {
     expect([1, 2, 3, 3, 4, 5, 5, 6].dropRepeats(), [1, 2, 3, 4, 5, 6]);
     expect([1, 1, 1, 2, 3, 4, 4, 2, 2].dropRepeats(), [1, 2, 3, 4, 2]);

@@ -21,6 +21,8 @@ extension FunctionalList<T> on Iterable<T> {
   Iterable<T> dropLastWhile(f.ElementTester<T> tester) =>
       f.dropLastWhile(this, tester);
 
+  Iterable<T> dropWhile(f.ElementTester<T> tester) => f.dropWhile(this, tester);
+
   Iterable<T> dropRepeats() => f.dropRepeats(this);
 
   Iterable<T> dropRepeatsWith(f.TwoElementsComparer<T, dynamic> comparer) =>

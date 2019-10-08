@@ -93,6 +93,9 @@ Iterable<T> dropLastWhile<T>(Iterable<T> elements, ElementTester<T> tester) =>
         .toList(growable: false)
         .reversed;
 
+Iterable<T> dropWhile<T>(Iterable<T> elements, ElementTester<T> tester) =>
+    elements.skipWhile(tester);
+
 Iterable<T> dropRepeats<T>(Iterable<T> elements) =>
     dropRepeatsWith(elements, (l, r) => l == r);
 
