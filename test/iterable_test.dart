@@ -156,4 +156,10 @@ main() {
     expect([1,2,3].concat([]), [1,2,3]);
   });
 
+  test('test iterable<T>.combine', () {
+    expect([1,2,3].combine([4,5,6]), [1,2,3,4,5,6]);
+    expect([1,2,3].combine([]), [1,2,3]);
+    expect([1,2,3].combine([]) is Iterable<num>, true);
+  });
+
 }

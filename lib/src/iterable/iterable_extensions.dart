@@ -12,6 +12,7 @@ extension FunctionalList<T> on Iterable<T> {
 
   Iterable<Iterable<T>> aperture(int size) => f.aperture(this, size);
 
+  Iterable<T> combine(Iterable<T> other) => f.combine(this, other);
 }
 
 extension FunctionalListConcat<R, T extends R> on Iterable<T> {

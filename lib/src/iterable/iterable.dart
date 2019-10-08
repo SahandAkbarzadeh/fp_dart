@@ -70,3 +70,7 @@ bool any<T>(Iterable<T> elements, ElementTester<T> tester) =>
 
 Iterable<R> concat<A extends R,B extends R,R>(Iterable<A> left, Iterable<B> right) =>
     <R>[...left, ...right];
+
+/// concat with a same type
+Iterable<T> combine<T>(Iterable<T> left, Iterable<T> right) =>
+    [...left, ...right];
