@@ -46,3 +46,7 @@ Iterable<T> adjust<T>(
 Iterable<T> append<T>(Iterable<T> elements, T element) {
   return [...elements, element];
 }
+
+Iterable<T> flatMap<T>(Iterable<Iterable<T>> elements,
+        ElementTransformer<Iterable<T>> transformer) =>
+    unnest(elements.map(transformer));

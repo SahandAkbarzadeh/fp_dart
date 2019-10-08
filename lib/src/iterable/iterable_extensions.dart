@@ -21,4 +21,6 @@ extension FunctionalListBool on Iterable<bool> {
 
 extension FunctionalListNested<T> on Iterable<Iterable<T>> {
   Iterable<T> unnest() => f.unnest(this);
+  Iterable<T> flatMap(f.ElementTransformer<Iterable<T>> transformer) =>
+      f.flatMap(this, transformer);
 }

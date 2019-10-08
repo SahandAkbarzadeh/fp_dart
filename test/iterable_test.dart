@@ -126,4 +126,13 @@ main() {
       [1]
     ]);
   });
+
+  test('test iterable<T>.flatMap', () {
+    expect(
+        [
+          [1, 2, 3],
+          [4, 5, 6]
+        ].flatMap((items) => [...items]),
+        [1, 2, 3, 4, 5, 6]);
+  });
 }
