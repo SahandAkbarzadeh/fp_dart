@@ -24,7 +24,7 @@ Iterable<R> flatten<R, T>(Iterable<T> elements) {
   List<R> result = [];
   for (var item in elements) {
     if (item is Iterable) {
-      result.addAll(flatten(item).map((x) => x as R));
+      result.addAll(flatten(item as Iterable).map((x) => x as R));
     } else {
       result.add(item as R);
     }
