@@ -137,29 +137,45 @@ main() {
   });
 
   test('test iterable<T>.aperture', () {
-    expect([1, 2, 3, 4, 5].aperture(2), [[1, 2], [2, 3], [3, 4], [4, 5]]);
-    expect([1, 2, 3, 4, 5].aperture(3), [[1, 2, 3], [2, 3, 4], [3, 4, 5]]);
+    expect([1, 2, 3, 4, 5].aperture(2), [
+      [1, 2],
+      [2, 3],
+      [3, 4],
+      [4, 5]
+    ]);
+    expect([1, 2, 3, 4, 5].aperture(3), [
+      [1, 2, 3],
+      [2, 3, 4],
+      [3, 4, 5]
+    ]);
     expect([1, 2, 3, 4, 5].aperture(7), []);
     expect([].aperture(1), []);
     expect([].aperture(2), []);
   });
 
   test('test iterable<T>.any', () {
-    expect(f.any([1,2,3], (e) => e >= 1), true);
-    expect(f.any([1,2,3], (e) => e >= 2), true);
-    expect(f.any([1,2,3], (e) => e >= 3), true);
-    expect(f.any([1,2,3], (e) => e >= 4), false);
+    expect(f.any([1, 2, 3], (e) => e >= 1), true);
+    expect(f.any([1, 2, 3], (e) => e >= 2), true);
+    expect(f.any([1, 2, 3], (e) => e >= 3), true);
+    expect(f.any([1, 2, 3], (e) => e >= 4), false);
   });
 
   test('test iterable<T>.concat', () {
-    expect([1,2,3].concat([4,5,6]), [1,2,3,4,5,6]);
-    expect([1,2,3].concat([]), [1,2,3]);
+    expect([1, 2, 3].concat([4, 5, 6]), [1, 2, 3, 4, 5, 6]);
+    expect([1, 2, 3].concat([]), [1, 2, 3]);
   });
 
   test('test iterable<T>.combine', () {
-    expect([1,2,3].combine([4,5,6]), [1,2,3,4,5,6]);
-    expect([1,2,3].combine([]), [1,2,3]);
-    expect([1,2,3].combine([]) is Iterable<num>, true);
+    expect([1, 2, 3].combine([4, 5, 6]), [1, 2, 3, 4, 5, 6]);
+    expect([1, 2, 3].combine([]), [1, 2, 3]);
+    expect([1, 2, 3].combine([]) is Iterable<num>, true);
   });
 
+  test('test iterable<T>.drop', () {
+    expect([1, 2, 3].drop(1), [2, 3]);
+    expect([1, 2].drop(1), [2]);
+    expect([1, 2].drop(2), []);
+    expect([1, 2].drop(3), []);
+    expectException(() => [1, 2].drop(-1));
+  });
 }

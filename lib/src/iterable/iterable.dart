@@ -68,9 +68,12 @@ Iterable<Iterable<T>> aperture<T>(Iterable<T> elements, int size) {
 bool any<T>(Iterable<T> elements, ElementTester<T> tester) =>
     elements.any(tester);
 
-Iterable<R> concat<A extends R,B extends R,R>(Iterable<A> left, Iterable<B> right) =>
+Iterable<R> concat<A extends R, B extends R, R>(
+        Iterable<A> left, Iterable<B> right) =>
     <R>[...left, ...right];
 
 /// concat with a same type
 Iterable<T> combine<T>(Iterable<T> left, Iterable<T> right) =>
     [...left, ...right];
+
+Iterable<T> drop<T>(Iterable<T> elements, int n) => elements.skip(n);

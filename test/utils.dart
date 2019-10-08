@@ -10,3 +10,12 @@ expectAssert(CallBack action) {
   }
   expect(1, 0);
 }
+
+expectException(CallBack action) {
+  try {
+    action();
+  } catch(e) {
+    return;
+  }
+  expect(1, 0);
+}
