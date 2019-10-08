@@ -120,3 +120,6 @@ bool endsWith<T>(Iterable<T> elements, T element) {
     return false;
   }
 }
+
+T? find<T>(Iterable<T> elements, ElementTester<T> tester)
+    => elements.firstWhere(tester, orElse: () => null);

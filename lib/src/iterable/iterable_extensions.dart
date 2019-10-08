@@ -29,6 +29,8 @@ extension FunctionalList<T> on Iterable<T> {
       f.dropRepeatsWith(this, comparer);
 
   bool endsWith(T element) => f.endsWith(this, element);
+
+  T? find(f.ElementTester<T> tester) => f.find<T>(this, tester);
 }
 
 extension FunctionalListConcat<R, T extends R> on Iterable<T> {

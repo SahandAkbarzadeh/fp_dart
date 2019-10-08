@@ -216,4 +216,9 @@ main() {
     expect([].endsWith(6), false);
   });
 
+  test('test iterable<T>.find', () {
+    expect([5, 5, 6].find((x) => x == 5), 5);
+    expect([5, 5, 6].find((x) => x == 7), null);
+  });
+
 }
