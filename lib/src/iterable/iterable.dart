@@ -91,3 +91,16 @@ Iterable<T> dropLastWhile<T>(Iterable<T> elements, ElementTester<T> tester) =>
         .skipWhile(tester)
         .toList(growable: false)
         .reversed;
+
+Iterable<T> dropRepeats<T>(Iterable<T> elements) {
+  // we don't use null here because null is valid value
+  dynamic _lastItem = Object();
+  var _result = <T>[];
+  for(var element in elements) {
+    if (element != _lastItem) {
+      _result.add(element);
+      _lastItem = element;
+    }
+  }
+  return _result;
+}
