@@ -31,6 +31,8 @@ extension FunctionalList<T> on Iterable<T> {
   bool endsWith(T element) => f.endsWith(this, element);
 
   T? find(f.ElementTester<T> tester) => f.find<T>(this, tester);
+
+  int? findIndex(f.ElementTester<T> tester) => f.findIndex<T>(this, tester);
 }
 
 extension FunctionalListConcat<R, T extends R> on Iterable<T> {

@@ -221,4 +221,10 @@ main() {
     expect([5, 5, 6].find((x) => x == 7), null);
   });
 
+  test('test iterable<T>.findIndex', () {
+    expect([5, 5, 6].findIndex((x) => x == 5), 0);
+    expect([5, 5, 6].findIndex((x) => x == 6), 2);
+    expect([5, 5, 6].findIndex((x) => x == 7), null);
+  });
+
 }
