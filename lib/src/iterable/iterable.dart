@@ -1,6 +1,7 @@
 import '../internal/extensions.dart';
 
 typedef ElementTester<T> = bool Function(T element);
+typedef TwoElementsComparer<L, R> = bool Function(L left, R right);
 typedef ElementTransformer<T> = T Function(T element);
 
 bool all<T>(Iterable<T> elements, ElementTester<T> test) {
@@ -92,12 +93,16 @@ Iterable<T> dropLastWhile<T>(Iterable<T> elements, ElementTester<T> tester) =>
         .toList(growable: false)
         .reversed;
 
-Iterable<T> dropRepeats<T>(Iterable<T> elements) {
+Iterable<T> dropRepeats<T>(Iterable<T> elements) =>
+    dropRepeatsWith(elements, (l, r) => l == r);
+
+Iterable<T> dropRepeatsWith<T>(
+    Iterable<T> elements, TwoElementsComparer<T, dynamic> comparer) {
   // we don't use null here because null is valid value
   dynamic _lastItem = Object();
   var _result = <T>[];
-  for(var element in elements) {
-    if (element != _lastItem) {
+  for (var element in elements) {
+    if (!comparer(element, _lastItem)) {
       _result.add(element);
       _lastItem = element;
     }

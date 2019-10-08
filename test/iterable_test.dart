@@ -1,7 +1,6 @@
 import 'package:fp_dart/src/iterable/iterable.dart' as f;
 import 'package:test/test.dart';
 import 'package:fp_dart/fp_dart.dart';
-
 import 'utils.dart';
 
 const orderedNumber1to5 = [1, 2, 3, 4, 5];
@@ -196,5 +195,13 @@ main() {
   test('test iterable<T>.dropRepeats', () {
     expect([1, 2, 3, 3, 4, 5, 5, 6].dropRepeats(), [1, 2, 3, 4, 5, 6]);
     expect([1, 1, 1, 2, 3, 4, 4, 2, 2].dropRepeats(), [1, 2, 3, 4, 2]);
+  });
+
+  test('test iterable<T>.dropRepeatsWith', () {
+    expect([1, 2, 3, 3, 4, 5, 5, 6].dropRepeatsWith((l, r) => l == r),
+        [1, 2, 3, 4, 5, 6]);
+    expect(
+        [1, -1, -1, 2, 3, 4, 4, 2, 2].dropRepeatsWith((l, r) => l.abs() == r),
+        [1, 2, 3, 4, 2]);
   });
 }
