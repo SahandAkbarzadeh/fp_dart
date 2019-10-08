@@ -178,4 +178,13 @@ main() {
     expect([1, 2].drop(3), []);
     expectException(() => [1, 2].drop(-1));
   });
+
+  test('test iterable<T>.dropLast', () {
+    expect([1, 2, 3].dropLast(1), [1, 2]);
+    expect([1, 2].dropLast(1), [1]);
+    expect([1, 2].dropLast(2), []);
+    expect([1, 2].dropLast(3), []);
+    expectAssert(() => [1, 2].dropLast(-1));
+  });
+
 }

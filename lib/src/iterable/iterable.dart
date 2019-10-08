@@ -77,3 +77,9 @@ Iterable<T> combine<T>(Iterable<T> left, Iterable<T> right) =>
     [...left, ...right];
 
 Iterable<T> drop<T>(Iterable<T> elements, int n) => elements.skip(n);
+
+Iterable<T> dropLast<T>(Iterable<T> elements, int n) {
+  assert(n >= 0);
+  var takeCount = elements.length - n;
+  return elements.take(takeCount < 0 ? 0 : takeCount);
+}

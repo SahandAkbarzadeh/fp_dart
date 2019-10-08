@@ -15,6 +15,8 @@ extension FunctionalList<T> on Iterable<T> {
   Iterable<T> combine(Iterable<T> other) => f.combine(this, other);
 
   Iterable<T> drop(int n) => f.drop(this, n);
+
+  Iterable<T> dropLast(int n) => f.dropLast(this, n);
 }
 
 extension FunctionalListConcat<R, T extends R> on Iterable<T> {
