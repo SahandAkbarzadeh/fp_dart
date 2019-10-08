@@ -1,3 +1,5 @@
+import '../internal/extensions.dart';
+
 typedef ElementTester<T> = bool Function(T element);
 typedef ElementTransformer<T> = T Function(T element);
 
@@ -50,3 +52,16 @@ Iterable<T> append<T>(Iterable<T> elements, T element) {
 Iterable<T> flatMap<T>(Iterable<Iterable<T>> elements,
         ElementTransformer<Iterable<T>> transformer) =>
     unnest(elements.map(transformer));
+
+Iterable<Iterable<T>> aperture<T>(Iterable<T> elements, int size) {
+  List<Iterable<T>> _result = [];
+  var idx = 0;
+  var limit = elements.length - (size - 1);
+  (limit >= 0 ? limit : 0).forEach((_) => _result.add([]));
+  var _items = elements.toList();
+  while(idx < limit) {
+    _result[idx] = _items.getRange(idx, idx + size);
+    idx++;
+  }
+  return _result;
+}

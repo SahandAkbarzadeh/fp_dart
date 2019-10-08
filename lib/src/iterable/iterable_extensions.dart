@@ -9,6 +9,8 @@ extension FunctionalList<T> on Iterable<T> {
       f.adjust(this, index, transformer);
 
   Iterable<T> append(T element) => f.append(this, element);
+
+  Iterable<Iterable<T>> aperture(int size) => f.aperture(this, size);
 }
 
 extension FunctionalListBool on Iterable<bool> {

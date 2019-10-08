@@ -135,4 +135,13 @@ main() {
         ].flatMap((items) => [...items]),
         [1, 2, 3, 4, 5, 6]);
   });
+
+  test('test iterable<T>.aperture', () {
+    expect([1, 2, 3, 4, 5].aperture(2), [[1, 2], [2, 3], [3, 4], [4, 5]]);
+    expect([1, 2, 3, 4, 5].aperture(3), [[1, 2, 3], [2, 3, 4], [3, 4, 5]]);
+    expect([1, 2, 3, 4, 5].aperture(7), []);
+    expect([].aperture(1), []);
+    expect([].aperture(2), []);
+  });
+
 }
