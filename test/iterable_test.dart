@@ -193,7 +193,7 @@ main() {
   });
 
   test('test iterable<T>.dropWhile', () {
-    expect([1, 2, 3, 4, 3, 2, 1].dropWhile((x) => x <= 3), [4,3,2,1]);
+    expect([1, 2, 3, 4, 3, 2, 1].dropWhile((x) => x <= 3), [4, 3, 2, 1]);
     expect([1, 2, 3, 4, 3, 2, 1].dropWhile((x) => true), []);
     expect([1, 2, 3].dropWhile((x) => false), [1, 2, 3]);
   });
@@ -221,10 +221,20 @@ main() {
     expect([5, 5, 6].find((x) => x == 7), null);
   });
 
+  test('test iterable<T>.findLast', () {
+    expect(
+        [
+          [1, 2],
+          [5, 6],
+          [1, 3]
+        ].findLast((x) => x.contains(1)),
+        [1, 3]);
+    expect([5, 5, 6].findLast((x) => x == 7), null);
+  });
+
   test('test iterable<T>.findIndex', () {
     expect([5, 5, 6].findIndex((x) => x == 5), 0);
     expect([5, 5, 6].findIndex((x) => x == 6), 2);
     expect([5, 5, 6].findIndex((x) => x == 7), null);
   });
-
 }

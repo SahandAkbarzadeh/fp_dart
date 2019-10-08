@@ -32,6 +32,8 @@ extension FunctionalList<T> on Iterable<T> {
 
   T? find(f.ElementTester<T> tester) => f.find<T>(this, tester);
 
+  T? findLast(f.ElementTester<T> tester) => f.findLast<T>(this, tester);
+
   int? findIndex(f.ElementTester<T> tester) => f.findIndex<T>(this, tester);
 }
 

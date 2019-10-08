@@ -124,6 +124,11 @@ bool endsWith<T>(Iterable<T> elements, T element) {
 T? find<T>(Iterable<T> elements, ElementTester<T> tester) =>
     elements.firstWhere(tester, orElse: () => null);
 
+T? findLast<T>(Iterable<T> elements, ElementTester<T> tester) => elements
+    .toList(growable: false)
+    .reversed
+    .firstWhere(tester, orElse: () => null);
+
 int? findIndex<T>(Iterable<T> elements, ElementTester<T> tester) {
   var idx = 0;
   for (var element in elements) {
