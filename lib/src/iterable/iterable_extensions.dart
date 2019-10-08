@@ -27,6 +27,8 @@ extension FunctionalList<T> on Iterable<T> {
 
   Iterable<T> dropRepeatsWith(f.TwoElementsComparer<T, dynamic> comparer) =>
       f.dropRepeatsWith(this, comparer);
+
+  bool endsWith(T element) => f.endsWith(this, element);
 }
 
 extension FunctionalListConcat<R, T extends R> on Iterable<T> {

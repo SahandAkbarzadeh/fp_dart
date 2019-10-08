@@ -112,3 +112,11 @@ Iterable<T> dropRepeatsWith<T>(
   }
   return _result;
 }
+
+bool endsWith<T>(Iterable<T> elements, T element) {
+  try {
+    return elements.last == element;
+  } on StateError {
+    return false;
+  }
+}

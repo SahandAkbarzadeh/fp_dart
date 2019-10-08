@@ -210,4 +210,10 @@ main() {
         [1, -1, -1, 2, 3, 4, 4, 2, 2].dropRepeatsWith((l, r) => l.abs() == r),
         [1, 2, 3, 4, 2]);
   });
+
+  test('test iterable<T>.endsWith', () {
+    expect([5, 5, 6].endsWith(6), true);
+    expect([].endsWith(6), false);
+  });
+
 }
