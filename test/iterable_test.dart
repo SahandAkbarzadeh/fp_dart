@@ -187,4 +187,9 @@ main() {
     expectAssert(() => [1, 2].dropLast(-1));
   });
 
+  test('test iterable<T>.dropLastWhile', () {
+    expect([1, 2, 3, 4, 3, 2, 1].dropLastWhile((x) => x <= 3), [1, 2, 3, 4]);
+    expect([1, 2, 3, 4, 3, 2, 1].dropLastWhile((x) => true), []);
+    expect([1, 2, 3].dropLastWhile((x) => false), [1, 2, 3]);
+  });
 }

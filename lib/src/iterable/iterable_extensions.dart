@@ -17,6 +17,9 @@ extension FunctionalList<T> on Iterable<T> {
   Iterable<T> drop(int n) => f.drop(this, n);
 
   Iterable<T> dropLast(int n) => f.dropLast(this, n);
+
+  Iterable<T> dropLastWhile(f.ElementTester<T> tester) =>
+      f.dropLastWhile(this, tester);
 }
 
 extension FunctionalListConcat<R, T extends R> on Iterable<T> {

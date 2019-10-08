@@ -83,3 +83,11 @@ Iterable<T> dropLast<T>(Iterable<T> elements, int n) {
   var takeCount = elements.length - n;
   return elements.take(takeCount < 0 ? 0 : takeCount);
 }
+
+Iterable<T> dropLastWhile<T>(Iterable<T> elements, ElementTester<T> tester) =>
+    elements
+        .toList(growable: false)
+        .reversed
+        .skipWhile(tester)
+        .toList(growable: false)
+        .reversed;
