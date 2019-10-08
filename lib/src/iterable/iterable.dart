@@ -42,3 +42,7 @@ Iterable<T> adjust<T>(
     return element;
   });
 }
+
+Iterable<T> append<T>(Iterable<T> elements, T element) {
+  return [...elements, element];
+}

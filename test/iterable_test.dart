@@ -106,7 +106,7 @@ main() {
     expect(flattedList1, [1, 2, 3, 4, 5, 3, 4, 5]);
   });
 
-  test('test adjust', () {
+  test('test iterable<T>.adjust', () {
     var adjustedList = orderedNumber1to5.adjust(0, (i) => i + 1);
     expect(adjustedList, [2, 2, 3, 4, 5]);
     adjustedList =
@@ -115,5 +115,15 @@ main() {
     expectAssert(() => f.adjust(orderedNumber1to5, -1, (i) => i));
     expectAssert(
         () => f.adjust(orderedNumber1to5, orderedNumber1to5.length, (i) => i));
+  });
+
+  test('test iterable<T>.append', () {
+    expect([1, 2, 3].append(2), [1, 2, 3, 2]);
+    expect(<dynamic>[1, 2, 3].append([1]), [
+      1,
+      2,
+      3,
+      [1]
+    ]);
   });
 }

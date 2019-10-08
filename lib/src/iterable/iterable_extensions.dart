@@ -7,6 +7,8 @@ extension FunctionalList<T> on Iterable<T> {
 
   Iterable<T> adjust(int index, f.ElementTransformer<T> transformer) =>
       f.adjust(this, index, transformer);
+
+  Iterable<T> append(T element) => f.append(this, element);
 }
 
 extension FunctionalListBool on Iterable<bool> {
