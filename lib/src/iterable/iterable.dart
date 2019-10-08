@@ -1,4 +1,5 @@
 typedef ElementTester<T> = bool Function(T element);
+typedef ElementTransformer<T> = T Function(T element);
 
 bool all<T>(Iterable<T> elements, ElementTester<T> test) {
   for (var element in elements) {
@@ -26,4 +27,18 @@ Iterable<R> flatten<R, T>(Iterable<T> elements) {
     }
   }
   return result;
+}
+
+Iterable<T> adjust<T>(
+    Iterable<T> elements, int index, ElementTransformer<T> transformer) {
+  assert(index < elements.length);
+  assert(index >= 0);
+  var i = 0;
+  return elements.map((element) {
+    i++;
+    if (i - 1 == index) {
+      return transformer(element);
+    }
+    return element;
+  });
 }

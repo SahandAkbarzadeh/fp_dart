@@ -1,5 +1,8 @@
+import 'package:fp_dart/src/iterable/iterable.dart' as f;
 import 'package:test/test.dart';
 import 'package:fp_dart/fp_dart.dart';
+
+import 'utils.dart';
 
 const orderedNumber1to5 = [1, 2, 3, 4, 5];
 const allTrue = [true, true, true, true, true];
@@ -101,5 +104,16 @@ main() {
   test('test iterable<iterable>.flatten<T>', () {
     Iterable<num> flattedList1 = listWithSubListDepth2.flatten<num>();
     expect(flattedList1, [1, 2, 3, 4, 5, 3, 4, 5]);
+  });
+
+  test('test adjust', () {
+    var adjustedList = orderedNumber1to5.adjust(0, (i) => i + 1);
+    expect(adjustedList, [2, 2, 3, 4, 5]);
+    adjustedList =
+        orderedNumber1to5.adjust(orderedNumber1to5.length - 1, (i) => i + 1);
+    expect(adjustedList, [1, 2, 3, 4, 6]);
+    expectAssert(() => f.adjust(orderedNumber1to5, -1, (i) => i));
+    expectAssert(
+        () => f.adjust(orderedNumber1to5, orderedNumber1to5.length, (i) => i));
   });
 }
